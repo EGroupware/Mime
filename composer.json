@@ -16,10 +16,10 @@
             "role": "lead"
         }
     ],
-    "version": "2.13.0",
+    "version": "2.13.1",
     "time": "2018-01-14",
     "require": {
-        "php": "^7 || ^8",
+        "php": "^7.1 || ^8",
         "pear-pear.horde.org/horde_exception": "^2",
         "pear-pear.horde.org/horde_listheaders": "^1.2",
         "pear-pear.horde.org/horde_mail": "^2.5",

@@ -121,7 +121,7 @@ class Horde_Mime_Uudecode implements Countable, IteratorAggregate
 
     /* IteratorAggregate method. */
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->_data);
     }

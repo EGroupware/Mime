@@ -2229,13 +2229,14 @@ implements ArrayAccess, Countable, RecursiveIterator, Serializable
 
     /**
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return ($this[$offset] !== null);
     }
 
     /**
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         $this->_reindex();
@@ -2261,7 +2262,7 @@ implements ArrayAccess, Countable, RecursiveIterator, Serializable
 
     /**
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->_parts[] = $value;
@@ -2280,7 +2281,7 @@ implements ArrayAccess, Countable, RecursiveIterator, Serializable
 
     /**
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         if ($part = $this[$offset]) {
             if ($part->parent === $this) {
@@ -2379,7 +2380,7 @@ implements ArrayAccess, Countable, RecursiveIterator, Serializable
      *
      * @return string  Serialized data.
      */
-    public function serialize()
+    public function serialize(): ?string
     {
         $data = array(
             // Serialized data ID.
@@ -2409,7 +2410,7 @@ implements ArrayAccess, Countable, RecursiveIterator, Serializable
      *
      * @throws Exception
      */
-    public function unserialize($data)
+    public function unserialize($data): void
     {
         $data = @unserialize($data);
         if (!is_array($data) ||

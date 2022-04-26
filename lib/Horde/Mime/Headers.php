@@ -386,7 +386,7 @@ implements ArrayAccess, IteratorAggregate, Serializable
      *
      * @return string  Serialized data.
      */
-    public function serialize()
+    public function serialize(): ?string
     {
         $data = array(
             // Serialized data ID.
@@ -406,7 +406,7 @@ implements ArrayAccess, IteratorAggregate, Serializable
      *
      * @throws Exception
      */
-    public function unserialize($data)
+    public function unserialize($data): void
     {
         $data = @unserialize($data);
         if (!is_array($data) ||
@@ -431,7 +431,7 @@ implements ArrayAccess, IteratorAggregate, Serializable
      *
      * @return boolean  True if header exists.
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->_headers[trim($offset)]);
     }
@@ -446,7 +446,7 @@ implements ArrayAccess, IteratorAggregate, Serializable
      * @return Horde_Mime_Headers_Element  Element object, or null if not
      *                                     found.
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?Horde_Mime_Headers_Element
     {
         return $this->_headers[trim($offset)];
     }
@@ -459,7 +459,7 @@ implements ArrayAccess, IteratorAggregate, Serializable
      * @param string $offset                   Not used.
      * @param Horde_Mime_Headers_Element $elt  Header element.
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->addHeaderOb($value);
     }
@@ -471,7 +471,7 @@ implements ArrayAccess, IteratorAggregate, Serializable
      *
      * @param string $offset  Header name.
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->_headers[trim($offset)]);
     }
@@ -481,7 +481,7 @@ implements ArrayAccess, IteratorAggregate, Serializable
     /**
      * @since 2.5.0
      */
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->_headers);
     }
